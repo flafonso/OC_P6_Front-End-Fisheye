@@ -4,3 +4,4 @@
 
 Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
 
+Simple modification pour mon 1er commit.
