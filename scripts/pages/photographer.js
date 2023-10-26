@@ -1,20 +1,5 @@
-//Mettre le code JavaScript lié à la page photographer.html
-async function getPhotographer() {
-  const params = new URL(document.location).searchParams;
-  const id = parseInt(params.get("id"));
-
-  const response = await fetch("./data/photographers.json");
-  const datas = await response.json();
-
-  const photographer = datas.photographers.find(photographer => photographer.id === id);
-  console.log(id, photographer);
-
-  return photographer;
-}
-
-async function displayData(photographer) {
+function photographHeader(photographer) {
   const photographHeader = document.querySelector(".photograph-header");
-
   const picture = `assets/photographers/profile_picture/${photographer.portrait}`;
 
   const textArea = document.createElement("div");
@@ -37,8 +22,14 @@ async function displayData(photographer) {
   photographHeader.append(textArea, imgEl);
 }
 
+async function displayData(photographer) {
+  photographHeader(photographer);
+  
+}
+
 async function init() {
-  const photographer = await getPhotographer();
+  const datas = await getDatas();  // eslint-disable-line no-undef
+  const photographer = await getPhotographer(datas);  // eslint-disable-line no-undef
   displayData(photographer);
 }
 

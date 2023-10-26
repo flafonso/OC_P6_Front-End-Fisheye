@@ -1,10 +1,3 @@
-async function getPhotographers() {
-  const response = await fetch("./data/photographers.json");
-  const datas = await response.json();
-  console.log(datas);
-  return datas;
-}
-
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
@@ -17,7 +10,7 @@ async function displayData(photographers) {
 
 async function init() {
   // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
+  const { photographers } = await getDatas();  // eslint-disable-line no-undef
   // console.log(photographers);
   displayData(photographers);
 }
