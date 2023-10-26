@@ -10,10 +10,10 @@ function photographerTemplate(data) {  // eslint-disable-line no-unused-vars
     const cardLink = document.createElement("a");
     cardLink.setAttribute("href", `photographer.html?id=${id}`);
 
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    const h2 = document.createElement("h2");
-    h2.textContent = name;
+    const imgEl = document.createElement("img");
+    imgEl.setAttribute("src", picture);
+    const nameEl = document.createElement("h2");
+    nameEl.textContent = name;
 
     const locationEl = document.createElement("p");
     locationEl.classList.add("location");
@@ -26,7 +26,7 @@ function photographerTemplate(data) {  // eslint-disable-line no-unused-vars
     priceEl.classList.add("price");
     priceEl.textContent = price;
 
-    cardLink.append(img, h2);
+    cardLink.append(imgEl, nameEl);
     article.append(cardLink, locationEl, taglineEl, priceEl);
     return article;
   }
