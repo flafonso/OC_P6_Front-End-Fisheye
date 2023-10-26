@@ -6,6 +6,10 @@ function photographerTemplate(data) {  // eslint-disable-line no-unused-vars
 
   function getUserCardDOM() {
     const article = document.createElement("article");
+
+    const cardLink = document.createElement("a");
+    cardLink.setAttribute("href", `photographer.html?id=${id}`);
+
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     const h2 = document.createElement("h2");
@@ -22,7 +26,8 @@ function photographerTemplate(data) {  // eslint-disable-line no-unused-vars
     priceEl.classList.add("price");
     priceEl.textContent = price;
 
-    article.append(img, h2, locationEl, taglineEl, priceEl);
+    cardLink.append(img, h2);
+    article.append(cardLink, locationEl, taglineEl, priceEl);
     return article;
   }
   return { name, picture, id, city, country, tagline, price, getUserCardDOM };
