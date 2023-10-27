@@ -8,7 +8,7 @@
     align-items: center;
     background-color: #FAFAFA;
     height: 300px;
-    width: fit-content;
+    min-width: min-content;
     margin: 0 100px;
     padding: 0 40px;
 }
@@ -114,4 +114,18 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.like-and-price {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    bottom: 0;
+    right: 30px;
+    background-color: #DB8876;
+    padding: 10px 16px;
+    border-radius: 5px 5px 0 0;
+    font-size: 18px;
+    font-weight: 500;
 }

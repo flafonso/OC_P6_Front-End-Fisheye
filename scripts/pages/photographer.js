@@ -1,3 +1,13 @@
+function photographLikePrice(photographer) {
+  const priceEl = document.querySelector(".price");
+  priceEl.textContent = `${photographer.price} / jour`;
+
+  const totalLikeEl = document.querySelector(".total-like");
+  const totalLikeValue = document.createElement("span");
+  totalLikeValue.textContent = "12 043";
+  totalLikeEl.prepend(totalLikeValue);
+}
+
 function photographHeader(photographer) {
   const photographHeader = document.querySelector(".photograph-header");
   const picture = `assets/photographers/profile_picture/${photographer.portrait}`;
@@ -24,7 +34,7 @@ function photographHeader(photographer) {
 
 async function displayData(photographer) {
   photographHeader(photographer);
-  
+  photographLikePrice(photographer);
 }
 
 async function init() {
