@@ -15,7 +15,7 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button">Contactez-moi</button>
       </div>
       <div class="like-and-price">
         <div class="total-like">
@@ -27,32 +27,35 @@
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2></h2>
+          <img class="close-btn" src="assets/icons/close.svg"/>
         </header>
-				<form>
+				<form name="contact-me">
 					<div class="form-data">
 						<label for="first">Prénom</label>
-						<input type="text" id="first" name="first"/>
+						<input type="text" id="first" name="first" class="text-control"/>
 					</div>
 					<div class="form-data">
 						<label for="last">Nom</label>
-						<input type="text" id="last" name="last"/>
+						<input type="text" id="last" name="last" class="text-control"/>
 					</div>
 					<div class="form-data">
 						<label for="email">Email</label>
-						<input type="email" id="email" name="email"/>
+						<input type="email" id="email" name="email" class="text-control"/>
 					</div>
 					<div class="form-data">
 						<label for="user-message">Votre message</label>
-						<input type="text" id="user-message" name="user-message"/>
+            <textarea id="user-message" name="user-message" class="text-control"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
+          <p class="success-text">Merci pour<br>votre message</p>
+          <button class="btn-finish">Fermer</button>
 				</form>
 			</div>
 		</div>
     <script src="/scripts/utils/datas.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/templates/form.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
