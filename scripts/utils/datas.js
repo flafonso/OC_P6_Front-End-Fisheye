@@ -1,4 +1,4 @@
-async function getDatas() {  // eslint-disable-line no-unused-vars
+async function getDatas() {
   const response = await fetch("./data/photographers.json");
   const datas = await response.json();
   console.log(datas);
@@ -14,3 +14,5 @@ async function getPhotographer(datas) {  // eslint-disable-line no-unused-vars
 
   return photographer;
 }
+
+export {getDatas, getPhotographer};

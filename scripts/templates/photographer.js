@@ -1,5 +1,5 @@
-function photographerTemplate(data) {  // eslint-disable-line no-unused-vars
-  console.log("Data : ", data);
+function photographerTemplate(data) {
+  // console.log("Data : ", data);
   const { name, portrait, id, city, country, tagline, price } = data;
 
   const picture = `assets/photographers/profile_picture/${portrait}`;
@@ -34,14 +34,14 @@ function photographerTemplate(data) {  // eslint-disable-line no-unused-vars
 }
 
 
-function photographModal(photographer) {  // eslint-disable-line no-unused-vars
+function photographModal(photographer) {
   const titleEl = document.querySelector(".modal header h2");
   titleEl.innerHTML = `Contactez-moi
                       <br>
                       ${photographer.name}`;
 }
 
-function photographLikePrice(photographer) {  // eslint-disable-line no-unused-vars
+function photographLikePrice(photographer) {
   const priceEl = document.querySelector(".price");
   priceEl.textContent = `${photographer.price} / jour`;
 
@@ -51,7 +51,7 @@ function photographLikePrice(photographer) {  // eslint-disable-line no-unused-v
   totalLikeEl.prepend(totalLikeValue);
 }
 
-function photographHeader(photographer) {  // eslint-disable-line no-unused-vars
+function photographHeader(photographer) {
   const photographHeader = document.querySelector(".photograph-header");
   const picture = `assets/photographers/profile_picture/${photographer.portrait}`;
 
@@ -74,3 +74,5 @@ function photographHeader(photographer) {  // eslint-disable-line no-unused-vars
   textArea.append(nameEl, locationEl, taglineEl);
   photographHeader.append(textArea, imgEl);
 }
+
+export {photographerTemplate, photographHeader, photographLikePrice, photographModal};

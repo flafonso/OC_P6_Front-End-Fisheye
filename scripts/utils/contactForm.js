@@ -1,11 +1,12 @@
-const modal = document.getElementById("contact_modal");
-const form = getFormCheck();  // eslint-disable-line no-undef
+import {form} from "/scripts/templates/form.js";
 
-function displayModal() {  // eslint-disable-line no-unused-vars
+const modal = document.getElementById("contact_modal");
+
+function displayModal() {
   modal.style.display = "block";
 }
 
-function closeModal() {  // eslint-disable-line no-unused-vars
+function closeModal() {
   modal.style.display = "none";
   form.emptyAll();
 }
