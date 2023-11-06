@@ -5,6 +5,10 @@ class Image extends Media {
     super(id, title, likes, date, price);
     this.image = image;
   }
+
+  get thumbnail() {
+    return `/assets/media/${this.image}`;
+  }
 }
 
 export { Image };

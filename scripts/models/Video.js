@@ -5,6 +5,10 @@ class Video extends Media {
     super(id, title, likes, date, price);
     this.video = video;
   }
+
+  get thumbnail() {
+    return "/assets/photographers/account.png";
+  }
 }
 
 export { Video };

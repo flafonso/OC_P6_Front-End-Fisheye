@@ -1,6 +1,7 @@
 import { getDatas, getPhotographer, getMedia } from "/scripts/utils/datas.js";
 import { photographHeader, photographLikePrice, photographModal } from "/scripts/templates/photographer.js";
 import { MediaFactory } from "/scripts/factories/MediaFactory.js";
+import { mediaCard } from "/scripts/templates/mediaCard.js";
 
 const params = new URL(document.location).searchParams;
 const id = parseInt(params.get("id"));
@@ -13,19 +14,14 @@ async function displayData(photographer) {
 
 function displayMedia(mediaApi) {
   console.log("mediaApi: ", mediaApi);
-  // const mediaSection = document.querySelector(".media-section");
+  const mediaSection = document.querySelector(".media-section");
 
   const media = mediaApi.map(content => MediaFactory.create(content));
   console.log("media : ", media);
 
-  // for(let i = 0; i < mediaApi.length; i++) {
-  //   const divEl = document.createElement("div");
-  //   const imgEl = document.createElement("img");
-  //   imgEl.setAttribute("src", `/assets/media/${mediaApi[i].image}`);
-
-  //   divEl.append(imgEl);
-  //   mediaSection.append(divEl);
-  // }
+  media.forEach(content => {
+    mediaSection.append(mediaCard(content));
+  });
 }
 
 async function init() {
