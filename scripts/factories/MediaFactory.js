@@ -7,19 +7,19 @@ class MediaFactory {
       return new Image(
         content.id,
         content.title,
-        content.image,
         content.likes,
         content.date,
-        content.price
+        content.price,
+        content.image
       );
     } else if (content.hasOwnProperty("video")) {
       return new Video(
         content.id,
         content.title,
-        content.video,
         content.likes,
         content.date,
-        content.price
+        content.price,
+        content.video
       );
     }
   }
