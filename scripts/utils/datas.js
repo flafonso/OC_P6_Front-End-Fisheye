@@ -1,18 +1,22 @@
 async function getDatas() {
   const response = await fetch("./data/photographers.json");
   const datas = await response.json();
-  console.log(datas);
+  // console.log(datas);
   return datas;
 }
 
-async function getPhotographer(datas) {  // eslint-disable-line no-unused-vars
-  const params = new URL(document.location).searchParams;
-  const id = parseInt(params.get("id"));
-
+async function getPhotographer(datas, id) {
   const photographer = datas.photographers.find(photographer => photographer.id === id);
-  console.log(id, photographer);
+  // console.log(id, photographer);
 
   return photographer;
 }
 
-export {getDatas, getPhotographer};
+async function getMedia(datas, id) {
+  const { media } = datas; // later go directly to datas.media
+  const photographMedia = media.filter((content) => content.photographerId === id);
+  console.log(media);
+  return photographMedia;
+}
+
+export {getDatas, getPhotographer, getMedia};

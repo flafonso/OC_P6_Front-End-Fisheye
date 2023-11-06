@@ -159,13 +159,13 @@ form textarea {
     transition: 0.3s;
   }
 
-  .form-data[data-error-visible="true"]::after {
-    opacity: 1;
-  }
+.form-data[data-error-visible="true"]::after {
+  opacity: 1;
+}
 
-  .form-data[data-error-visible="true"] .text-control {
-    border: 2px solid #e54858;
-  }
+.form-data[data-error-visible="true"] .text-control {
+  border: 2px solid #e54858;
+}
 
 .like-and-price {
     position: fixed;
@@ -179,4 +179,14 @@ form textarea {
     border-radius: 5px 5px 0 0;
     font-size: 18px;
     font-weight: 500;
+}
+
+.media-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.media-section img {
+    width: 150px;
+    height: 150px;
 }
