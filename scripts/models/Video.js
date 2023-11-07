@@ -7,7 +7,11 @@ class Video extends Media {
   }
 
   get thumbnail() {
-    return "/assets/photographers/account.png";
+    return `
+        <video>
+          <source src="/assets/media/${this.video}" type="video/mp4" />
+        </video>
+    `;
   }
 }
 

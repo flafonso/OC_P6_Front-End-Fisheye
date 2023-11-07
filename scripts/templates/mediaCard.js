@@ -4,10 +4,7 @@ function mediaCard(content) {
 
   mediaCard.innerHTML = `
       <div class="card-thumbnail">
-        <img
-          alt="${content.title}"
-          src="${content.thumbnail}"
-        />
+        ${content.thumbnail}
       </div>
       <div class="card-content">
         <h2 class="title">${content.title}</h2>

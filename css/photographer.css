@@ -195,7 +195,7 @@ form textarea {
     aspect-ratio: 1 / 1;
 }
 
-.card-thumbnail img {
+.card-thumbnail img, video {
     width: 100%;
     aspect-ratio: 7 / 6;
     object-fit: cover;

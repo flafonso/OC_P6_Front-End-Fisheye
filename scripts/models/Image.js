@@ -7,7 +7,7 @@ class Image extends Media {
   }
 
   get thumbnail() {
-    return `/assets/media/${this.image}`;
+    return `<img src="/assets/media/${this.image}" alt="${this.title}" />`;
   }
 }
 
