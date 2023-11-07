@@ -16,8 +16,9 @@
     align-items: center;
     background-color: #FAFAFA;
     height: 300px;
+    width: 85%;
     min-width: min-content;
-    margin: 0 100px;
+    margin: 0 auto;
     padding: 0 40px;
 }
 
@@ -182,11 +183,54 @@ form textarea {
 }
 
 .media-section {
-    display: flex;
-    justify-content: space-between;
+    width: calc(85% + 80px);
+    height: auto;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 28%);
+    justify-content: center;
+    gap: 20px 8%;
 }
 
-.media-section img {
-    width: 150px;
-    height: 150px;
+.media-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    aspect-ratio: 1 / 1;
 }
+
+.card-thumbnail img {
+    width: 100%;
+    aspect-ratio: 7 / 6;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.card-content {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #901C1C;
+}
+
+.card-content .title {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.card-content .like {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-content .like p {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+/* .card-content .like img {
+    fill: #901C1C;
+} */

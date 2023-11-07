@@ -3,13 +3,15 @@ function mediaCard(content) {
   mediaCard.className = "media-card";
 
   mediaCard.innerHTML = `
-      <img
-        alt="${content.title}"
-        src="${content.thumbnail}"
-      />
-      <div>
+      <div class="card-thumbnail">
+        <img
+          alt="${content.title}"
+          src="${content.thumbnail}"
+        />
+      </div>
+      <div class="card-content">
         <h2 class="title">${content.title}</h2>
-        <div>
+        <div class="like">
           <p>${content.likes}</p>
           <img src="/assets/icons/heart.svg"/>
         </div>
