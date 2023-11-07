@@ -6,12 +6,6 @@ import { mediaCard } from "/scripts/templates/mediaCard.js";
 const params = new URL(document.location).searchParams;
 const id = parseInt(params.get("id"));
 
-async function displayData(photographer) {
-  photographHeader(photographer);
-  photographLikePrice(photographer);
-  photographModal(photographer);
-}
-
 function displayMedia(mediaApi) {
   console.log("mediaApi: ", mediaApi);
   const mediaSection = document.querySelector(".media-section");
@@ -29,8 +23,10 @@ async function init() {
   const photographer = await getPhotographer(datas, id);
   const mediaApi = await getMedia(datas, id);
   // console.log(mediaApi);
-  displayData(photographer);
+  photographHeader(photographer);
   displayMedia(mediaApi);
+  photographLikePrice(photographer);
+  photographModal(photographer);
 }
 
 init();
