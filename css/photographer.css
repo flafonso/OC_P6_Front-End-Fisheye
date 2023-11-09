@@ -230,3 +230,75 @@ form textarea {
 /* .card-content .like img {
     fill: #901C1C;
 } */
+
+ .sort-section {
+    display: flex;
+    /* align-items: center; */
+    gap: 25px;
+    width: calc(85% + 80px);
+    height: 43px;
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    overflow: visible;
+}
+
+.sort-by {
+    margin-top: 10px;
+}
+
+.dropdown {
+    position: relative;
+    width: 150px;
+    padding: 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    color: white;
+    background: #901C1C;
+    user-select: none;
+    border-radius: 5px;
+}
+
+.dropdown--open {
+    padding: 10px 15px;
+    height: 131px;
+}
+
+.dropdown .select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected {
+    padding: 10px;
+}
+
+.options-menu {
+    display: none;
+    position: absolute;
+    width: 150px;
+    z-index: 1;
+    transition: 200ms;
+}
+
+.options-menu p {
+    margin: 0;
+    padding: 10px;
+}
+
+.options-menu--visible {
+    display: block;
+}
+
+.active {
+    display: none;
+}
+
+.middle-separation {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
