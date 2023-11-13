@@ -1,32 +1,63 @@
 import { getDatas, getPhotographer, getMedia } from "/scripts/utils/datas.js";
-import { photographHeader, photographLikePrice, photographModal } from "/scripts/templates/photographer.js";
+import {
+  photographHeader,
+  photographLikePrice,
+  photographModal,
+} from "/scripts/templates/photographer.js";
 import { MediaFactory } from "/scripts/factories/MediaFactory.js";
 import { mediaCard } from "/scripts/templates/mediaCard.js";
 
 const params = new URL(document.location).searchParams;
 const id = parseInt(params.get("id"));
 
-function displayMedia(mediaApi) {
-  console.log("mediaApi: ", mediaApi);
+const selectedEl = document.querySelector(".selected");
+// console.log("selectedEl data", selectedEl.getDatas);
+
+function displayMedia(media) {
   const mediaSection = document.querySelector(".media-section");
+  mediaSection.innerHTML = "";
 
-  const media = mediaApi.map(content => MediaFactory.create(content));
-  console.log("media : ", media);
-
-  media.forEach(content => {
+  media.forEach((content) => {
     mediaSection.append(mediaCard(content));
   });
 }
 
+function sortMedia(media) {
+  switch (selectedEl.innerHTML) {
+  case "Date":
+    media.sort((a, b) => new Date(a.date) - new Date(b.date));
+    break;
+  case "Titre":
+    media.sort((a, b) => a.title.localeCompare(b.title));
+    break;
+  default:
+    media.sort((a, b) => a.likes - b.likes);
+  }
+  console.log("sortMedia", media);
+}
+
 async function init() {
   const datas = await getDatas();
+
   const photographer = await getPhotographer(datas, id);
-  const mediaApi = await getMedia(datas, id);
-  // console.log(mediaApi);
   photographHeader(photographer);
-  displayMedia(mediaApi);
+
+  const mediaApi = await getMedia(datas, id);
+  // console.log("mediaApi: ", mediaApi);
+
+  const media = mediaApi.map((content) => MediaFactory.create(content));
+  // console.log("media : ", media);
+  sortMedia(media);
+  displayMedia(media);
+
   photographLikePrice(photographer);
   photographModal(photographer);
+
+  const observer = new MutationObserver(() => {
+    sortMedia(media);
+    displayMedia(media);
+  });
+  observer.observe(selectedEl, { childList: true });
 }
 
 init();

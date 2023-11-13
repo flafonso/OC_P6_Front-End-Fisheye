@@ -1,5 +1,3 @@
-/* eslint-disable*/
-
 const dropdownEl = document.querySelector(".dropdown");
 
 const selectEl = document.querySelector(".select");
@@ -8,10 +6,10 @@ const arrowEl = document.querySelector(".arrow");
 const optionsMenuEl = document.querySelector(".options-menu");
 const optionsEl = document.querySelectorAll(".options-menu p");
 
-console.log("selectEl", selectEl);
-console.log("selectedEl", selectedEl);
+// console.log("selectEl", selectEl);
+// console.log("selectedEl", selectedEl);
 console.log("arrowEl", arrowEl);
-console.log("optionsMenuEl", optionsMenuEl);
+// console.log("optionsMenuEl", optionsMenuEl);
 
 selectEl.addEventListener("click", () => {
   dropdownEl.classList.toggle("dropdown--open");
@@ -20,7 +18,7 @@ selectEl.addEventListener("click", () => {
 
 optionsEl.forEach((option) => {
   option.addEventListener("click", () => {
-    console.log("option", option);
+    // console.log("option", option);
     selectedEl.innerHTML = option.innerHTML;
     optionsMenuEl.classList.remove("options-menu--visible");
     dropdownEl.classList.remove("dropdown--open");
