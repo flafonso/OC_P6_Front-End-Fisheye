@@ -251,7 +251,7 @@ form textarea {
 .dropdown {
     position: relative;
     width: 150px;
-    padding: 0 15px;
+    padding: 0 10px;
     font-size: 18px;
     font-weight: bold;
     border: none;
@@ -282,7 +282,6 @@ form textarea {
     position: absolute;
     width: 150px;
     z-index: 1;
-    transition: 200ms;
 }
 
 .options-menu p {
@@ -294,11 +293,22 @@ form textarea {
     display: block;
 }
 
-.active {
+.hide-option {
     display: none;
 }
 
 .middle-separation {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+}
+
+.arrow {
+    width: 16px;
+    height: 11px;
+    fill: white;
+    transition: 400ms ease-in-out;
+}
+
+.arrow--rotate {
+    transform: rotate(180deg);
 }
