@@ -1,36 +1,42 @@
 class Lightbox {
   static init() {
-    const links = document.querySelectorAll(".card-thumbnail img, video");
-    console.log("links", links);
-    links.forEach((link) =>
-      link.addEventListener(
+    const mediaList = Array.from(document.querySelectorAll(".card-thumbnail img, video"));
+    console.log("mediaList", mediaList);
+
+    mediaList.forEach((media) =>
+      media.addEventListener(
         "click",
-        (e) => new Lightbox(e.currentTarget.cloneNode(true))
+        (e) => new Lightbox(e.currentTarget.cloneNode(true), mediaList)
       )
     );
   }
 
   /**
-   * @param {HTMLElement} Media element
+   * @param {HTMLElement} media element
    */
-  constructor(mediaEl) {
-    console.log("media", mediaEl);
+  constructor(mediaEl, mediaList) {
+    this.mediaList = mediaList;
     this.element = this.buildDom();
-    console.log("element", this.element);
+    this._onkeyUp = this.onkeyUp.bind(this);
     this.loadMedia(mediaEl);
     document.body.append(this.element);
+    document.addEventListener("keyup", this._onkeyUp);
+
+    console.log("media", mediaEl);
+    // console.log("element", this.element);
   }
 
   /**
-   * @param {HTMLElement} Media element
+   * @param {HTMLElement} media element
    */
   loadMedia(mediaEl) {
+    this.currentMedia = mediaEl.outerHTML;
     const content = this.element.querySelector(".lightbox-content");
     const loader = document.createElement("div");
     loader.classList.add("lightbox-loader");
-    // content.innerHTML = "";
+    content.innerHTML = "";
     content.append(loader);
-
+    console.log("mediaaa", mediaEl);
     if (mediaEl.tagName === "IMG") {
       mediaEl.onload = () => {
         console.log("Média IMG charger");
@@ -48,6 +54,55 @@ class Lightbox {
   }
 
   /**
+   * @param {KeyboardEvent} e
+   */
+  onkeyUp(e) {
+    if (e.key === "Escape") {
+      this.close(e);
+    } else if (e.key === "ArrowRight") {
+      this.next(e);
+    } else if (e.key === "ArrowLeft") {
+      this.prev(e);
+    }
+  }
+
+  /**
+   * @param {MouseEvent|KeyboardEvent} e
+   */
+  close(e) {
+    e.preventDefault();
+    this.element.classList.add("lightbox-fadeOut");
+    window.setTimeout(() => {
+      this.element.parentElement?.removeChild(this.element);
+    }, 500);
+    document.removeEventListener("keyup", this._onkeyUp);
+  }
+
+  /**
+   * @param {MouseEvent|KeyboardEvent} e
+   */
+  next(e) {
+    e.preventDefault();
+    let i = this.mediaList.findIndex(media => media.outerHTML === this.currentMedia);
+    if (i === this.mediaList.length - 1) {
+      i = -1;
+    }
+    this.loadMedia(this.mediaList[i + 1].cloneNode(true));
+  }
+
+  /**
+   * @param {MouseEvent|KeyboardEvent} e
+   */
+  prev(e) {
+    e.preventDefault();
+    let i = this.mediaList.findIndex(media => media.outerHTML === this.currentMedia);
+    if (i === 0) {
+      i = this.mediaList.length;
+    }
+    this.loadMedia(this.mediaList[i - 1].cloneNode(true));
+  }
+
+  /**
    * @return {HTMLElement}
    */
   buildDom() {
@@ -59,6 +114,15 @@ class Lightbox {
         <button class="lightbox-prev">Précédent</button>
         <div class="lightbox-content"></div>
     `;
+    dom
+      .querySelector(".lightbox-close")
+      .addEventListener("click", this.close.bind(this));
+    dom
+      .querySelector(".lightbox-next")
+      .addEventListener("click", this.next.bind(this));
+    dom
+      .querySelector(".lightbox-prev")
+      .addEventListener("click", this.prev.bind(this));
     return dom;
   }
 }

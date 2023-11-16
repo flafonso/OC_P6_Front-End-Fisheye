@@ -390,11 +390,21 @@ form textarea {
     background: url(/assets/loader.svg) center center no-repeat;
 }
 
+.lightbox-fadeOut {
+    animation: fadeOut 250ms linear forwards;
+}
+
 @keyframes lightboxIn {
     from {
         opacity: 0;
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
     }
 }
