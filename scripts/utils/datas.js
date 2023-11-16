@@ -5,18 +5,15 @@ async function getDatas() {
   return datas;
 }
 
-async function getPhotographer(datas, id) {
+async function getPhotographerDatas(id) {
+  const datas = await getDatas();
   const photographer = datas.photographers.find(photographer => photographer.id === id);
-  // console.log(id, photographer);
+  const media = datas.media.filter((content) => content.photographerId === id);
+  // console.log("photographer", photographer);
+  // console.log("photographMedia", media);
 
-  return photographer;
+  // console.log("fusion", {photographer, media});
+  return {photographer, media};
 }
 
-async function getMedia(datas, id) {
-  const { media } = datas; // later go directly to datas.media
-  const photographMedia = media.filter((content) => content.photographerId === id);
-  console.log(media);
-  return photographMedia;
-}
-
-export {getDatas, getPhotographer, getMedia};
+export {getDatas, getPhotographerDatas};

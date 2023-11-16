@@ -3,7 +3,7 @@ class Lightbox {
     const mediaList = Array.from(
       document.querySelectorAll(".card-thumbnail img, video")
     );
-    console.log("mediaList", mediaList);
+    // console.log("mediaList", mediaList);
 
     mediaList.forEach((media) =>
       media.addEventListener(
@@ -103,11 +103,9 @@ class Lightbox {
     let i = this.mediaList.findIndex(
       (media) => media.outerHTML === this.currentMedia
     );
-    console.log("i", i);
     if (i === 0) {
       i = this.mediaList.length;
     }
-    console.log("i", i);
     this.loadMedia(this.mediaList[i - 1]);
   }
 

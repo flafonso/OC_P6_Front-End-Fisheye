@@ -1,4 +1,4 @@
-import { getDatas, getPhotographer, getMedia } from "/scripts/utils/datas.js";
+import { getPhotographerDatas } from "/scripts/utils/datas.js";
 import {
   photographHeader,
   photographLikePrice,
@@ -39,21 +39,15 @@ function sortMedia(media) {
 }
 
 async function init() {
-  const datas = await getDatas();
+  const data = await getPhotographerDatas(id);
+  photographHeader(data.photographer);
 
-  const photographer = await getPhotographer(datas, id);
-  photographHeader(photographer);
-
-  const mediaApi = await getMedia(datas, id);
-  // console.log("mediaApi: ", mediaApi);
-
-  const media = mediaApi.map((content) => MediaFactory.create(content));
-  // console.log("media : ", media);
+  const media = data.media.map((content) => MediaFactory.create(content));
   sortMedia(media);
   displayMedia(media);
 
-  photographLikePrice(photographer);
-  photographModal(photographer);
+  photographLikePrice(data.photographer);
+  photographModal(data.photographer);
 
   const observer = new MutationObserver(() => {
     sortMedia(media);
