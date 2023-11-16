@@ -6,21 +6,21 @@ const arrowEl = document.querySelector(".arrow");
 const optionsMenuEl = document.querySelector(".options-menu");
 const optionsEl = document.querySelectorAll(".options-menu p");
 
-selectEl.addEventListener("click", () => {
+function dropdownClic() {
   // Little change of dropdown style when it's open
   dropdownEl.classList.toggle("dropdown--open");
   // Show or hide options menu
   optionsMenuEl.classList.toggle("options-menu--visible");
   arrowEl.classList.toggle("arrow--rotate");
-});
+}
+
+selectEl.addEventListener("click", dropdownClic);
 
 // Click event handler for options
 optionsEl.forEach((option) => {
   option.addEventListener("click", () => {
     selectedEl.innerHTML = option.innerHTML;
-    optionsMenuEl.classList.remove("options-menu--visible");
-    dropdownEl.classList.remove("dropdown--open");
-    arrowEl.classList.remove("arrow--rotate");
+    dropdownClic();
 
     // Re-displays the option that is no longer selected and removes the separator bars
     optionsEl.forEach((option) => {

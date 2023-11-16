@@ -6,10 +6,14 @@ class Video extends Media {
     this.video = video;
   }
 
+  get src() {
+    return `/assets/media/${this.video}`;
+  }
+
   get thumbnail() {
     return `
         <video>
-          <source src="/assets/media/${this.video}" type="video/mp4" />
+          <source src="${this.src}" type="video/mp4" />
         </video>
     `;
   }
