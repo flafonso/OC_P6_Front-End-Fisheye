@@ -25,13 +25,13 @@ function displayMedia(media) {
 function sortMedia(media) {
   switch (selectedEl.innerHTML) {
   case "Date":
-    media.sort((a, b) => new Date(a.date) - new Date(b.date));
+    media.sort((a, b) => new Date(b.date) - new Date(a.date));
     break;
   case "Titre":
     media.sort((a, b) => a.title.localeCompare(b.title));
     break;
   default:
-    media.sort((a, b) => a.likes - b.likes);
+    media.sort((a, b) => b.likes - a.likes);
   }
   console.log("sortMedia", media);
 }

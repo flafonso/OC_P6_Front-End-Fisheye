@@ -30,8 +30,8 @@ function photographerTemplate(data) {
 function userPageTemplate(data) {
   const { name, portrait, city, country, tagline, price } = data.photographer;
 
-  const media = data.media.map((content) => MediaFactory.create(content));
-  console.log("yyyy media", media);
+  const userMedia = data.media.map((content) => MediaFactory.create(content));
+  console.log("yyyy userMedia", userMedia);
 
   const picture = `/assets/photographers/profile_picture/${portrait}`;
 
