@@ -362,7 +362,7 @@ form textarea {
 
 .lightbox-content {
     width: 73vw;
-    max-width: 1050px;
+    /* max-width: 1050px; */
     height: 88%;
     margin: auto;
     margin-top: 6vh;

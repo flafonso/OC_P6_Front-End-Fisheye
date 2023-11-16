@@ -15,6 +15,7 @@ class Lightbox {
 
   /**
    * @param {HTMLElement} media element
+   * @param {List} list of media element
    */
   constructor(mediaEl, mediaList) {
     this.mediaList = mediaList;
@@ -24,7 +25,7 @@ class Lightbox {
     document.body.append(this.element);
     document.addEventListener("keyup", this._onkeyUp);
 
-    console.log("media", mediaEl);
+    // console.log("media", mediaEl);
     // console.log("element", this.element);
   }
 
@@ -32,27 +33,25 @@ class Lightbox {
    * @param {HTMLElement} media element
    */
   loadMedia(mediaEl) {
-    this.currentMedia = mediaEl.cloneNode(true);
+    this.currentMedia = mediaEl.outerHTML;
     const content = this.element.querySelector(".lightbox-content");
     const loader = document.createElement("div");
     loader.classList.add("lightbox-loader");
     content.innerHTML = "";
     content.append(loader);
-
     this.element.querySelector(".media-title").innerText =
       mediaEl.parentElement.parentElement.querySelector(".title").innerText;
-
-    // console.log("this.currentMedia", this.currentMedia);
-    if (this.currentMedia.tagName === "IMG") {
-      this.currentMedia.onload = () => {
+    mediaEl = mediaEl.cloneNode(true);
+    if (mediaEl.tagName === "IMG") {
+      mediaEl.onload = () => {
         content.removeChild(loader);
-        content.appendChild(this.currentMedia);
+        content.appendChild(mediaEl);
       };
     } else {
-      this.currentMedia.onloadeddata = () => {
+      mediaEl.onloadeddata = () => {
         content.removeChild(loader);
-        this.currentMedia.controls = true;
-        content.appendChild(this.currentMedia);
+        mediaEl.controls = true;
+        content.appendChild(mediaEl);
       };
     }
   }
@@ -88,7 +87,7 @@ class Lightbox {
   next(e) {
     e.preventDefault();
     let i = this.mediaList.findIndex(
-      (media) => media.outerHTML === this.currentMedia.outerHTML
+      (media) => media.outerHTML === this.currentMedia
     );
     if (i === this.mediaList.length - 1) {
       i = -1;
@@ -102,11 +101,13 @@ class Lightbox {
   prev(e) {
     e.preventDefault();
     let i = this.mediaList.findIndex(
-      (media) => media.outerHTML === this.currentMedia.outerHTML
+      (media) => media.outerHTML === this.currentMedia
     );
+    console.log("i", i);
     if (i === 0) {
       i = this.mediaList.length;
     }
+    console.log("i", i);
     this.loadMedia(this.mediaList[i - 1]);
   }
 

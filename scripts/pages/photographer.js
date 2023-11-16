@@ -21,6 +21,7 @@ function displayMedia(media) {
   media.forEach((content) => {
     mediaSection.append(mediaCard(content));
   });
+  Lightbox.init();
 }
 
 function sortMedia(media) {
@@ -59,7 +60,6 @@ async function init() {
     displayMedia(media);
   });
   observer.observe(selectedEl, { childList: true });
-  Lightbox.init();
 }
 
 init();
