@@ -8,6 +8,8 @@ import { MediaFactory } from "/scripts/factories/MediaFactory.js";
 import { mediaCard } from "/scripts/templates/mediaCard.js";
 import { Lightbox } from "/scripts/templates/lightbox.js";
 
+import { listenContact } from "/scripts/Utils/contactForm.js";
+
 const params = new URL(document.location).searchParams;
 const id = parseInt(params.get("id"));
 
@@ -41,6 +43,7 @@ function sortMedia(media) {
 async function init() {
   const data = await getPhotographerDatas(id);
   photographHeader(data.photographer);
+  listenContact();
 
   const media = data.media.map((content) => MediaFactory.create(content));
   sortMedia(media);

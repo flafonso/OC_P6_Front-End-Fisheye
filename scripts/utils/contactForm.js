@@ -11,10 +11,6 @@ function closeModal() {
   form.emptyAll();
 }
 
-
-const headerContactBtn = document.querySelector(".photograph-header .contact_button");
-headerContactBtn.addEventListener("click", displayModal);
-
 const closeBtn = document.querySelector(".close-btn");
 closeBtn.addEventListener("click", closeModal);
 
@@ -112,3 +108,12 @@ function submission(event) {
   }
   return console.log("validate fini");
 }
+
+
+function listenContact() {
+  const headerContactBtn = document.querySelector(".contact_button.contact--header");
+  // console.log(headerContactBtn);
+  headerContactBtn.addEventListener("click", displayModal);
+}
+
+export { listenContact };
