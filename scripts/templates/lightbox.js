@@ -1,12 +1,14 @@
 class Lightbox {
   static init() {
-    const mediaList = Array.from(document.querySelectorAll(".card-thumbnail img, video"));
+    const mediaList = Array.from(
+      document.querySelectorAll(".card-thumbnail img, video")
+    );
     console.log("mediaList", mediaList);
 
     mediaList.forEach((media) =>
       media.addEventListener(
         "click",
-        (e) => new Lightbox(e.currentTarget.cloneNode(true), mediaList)
+        (e) => new Lightbox(e.currentTarget, mediaList)
       )
     );
   }
@@ -30,25 +32,27 @@ class Lightbox {
    * @param {HTMLElement} media element
    */
   loadMedia(mediaEl) {
-    this.currentMedia = mediaEl.outerHTML;
+    this.currentMedia = mediaEl.cloneNode(true);
     const content = this.element.querySelector(".lightbox-content");
     const loader = document.createElement("div");
     loader.classList.add("lightbox-loader");
     content.innerHTML = "";
     content.append(loader);
-    console.log("mediaaa", mediaEl);
-    if (mediaEl.tagName === "IMG") {
-      mediaEl.onload = () => {
-        console.log("Média IMG charger");
+
+    this.element.querySelector(".media-title").innerText =
+      mediaEl.parentElement.parentElement.querySelector(".title").innerText;
+
+    // console.log("this.currentMedia", this.currentMedia);
+    if (this.currentMedia.tagName === "IMG") {
+      this.currentMedia.onload = () => {
         content.removeChild(loader);
-        content.appendChild(mediaEl);
+        content.appendChild(this.currentMedia);
       };
     } else {
-      mediaEl.onloadeddata = () => {
-        console.log("Média VIDEO charger");
+      this.currentMedia.onloadeddata = () => {
         content.removeChild(loader);
-        mediaEl.controls = true;
-        content.appendChild(mediaEl);
+        this.currentMedia.controls = true;
+        content.appendChild(this.currentMedia);
       };
     }
   }
@@ -83,11 +87,13 @@ class Lightbox {
    */
   next(e) {
     e.preventDefault();
-    let i = this.mediaList.findIndex(media => media.outerHTML === this.currentMedia);
+    let i = this.mediaList.findIndex(
+      (media) => media.outerHTML === this.currentMedia.outerHTML
+    );
     if (i === this.mediaList.length - 1) {
       i = -1;
     }
-    this.loadMedia(this.mediaList[i + 1].cloneNode(true));
+    this.loadMedia(this.mediaList[i + 1]);
   }
 
   /**
@@ -95,11 +101,13 @@ class Lightbox {
    */
   prev(e) {
     e.preventDefault();
-    let i = this.mediaList.findIndex(media => media.outerHTML === this.currentMedia);
+    let i = this.mediaList.findIndex(
+      (media) => media.outerHTML === this.currentMedia.outerHTML
+    );
     if (i === 0) {
       i = this.mediaList.length;
     }
-    this.loadMedia(this.mediaList[i - 1].cloneNode(true));
+    this.loadMedia(this.mediaList[i - 1]);
   }
 
   /**
@@ -113,6 +121,7 @@ class Lightbox {
         <button class="lightbox-next">Suivant</button>
         <button class="lightbox-prev">Précédent</button>
         <div class="lightbox-content"></div>
+        <p class="media-title">media title</p>
     `;
     dom
       .querySelector(".lightbox-close")

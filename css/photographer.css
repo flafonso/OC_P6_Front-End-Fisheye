@@ -327,6 +327,7 @@ form textarea {
 }
 
 .lightbox button {
+    position: fixed;
     padding: 0;
     border: none;
     cursor: pointer;
@@ -336,7 +337,6 @@ form textarea {
 
 .lightbox-next, .lightbox-prev {
     background: url(/assets/icons/arrow.svg) center center / 30px 48px no-repeat;
-    position: fixed;
     width: 96px;
     height: 96px;
     top: 50%;
@@ -353,7 +353,6 @@ form textarea {
 
 .lightbox-close {
     background: url(/assets/icons/lightbox_close.svg) center center / 42px 42px;
-    position: fixed;
     width: 42px;
     height: 42px;
     top: 77px;
@@ -363,13 +362,11 @@ form textarea {
 
 .lightbox-content {
     width: 73vw;
+    max-width: 1050px;
     height: 88%;
     margin: auto;
     margin-top: 6vh;
     margin-bottom: 6vh;
-    padding: 2px;
-    /* background-color: white; */
-    border-radius: 5px;
     overflow: hidden;
 }
 
@@ -379,6 +376,16 @@ form textarea {
     object-fit: cover;
     border-radius: 5px;
     animation: lightboxIn 500ms ease-in-out;
+}
+
+.media-title {
+    margin: 0;
+    position: fixed;
+    left: 13.5vw;
+    bottom: 2vh;
+    font-size: 24px;
+    color: #901C1C;
+    z-index: 11;
 }
 
 .lightbox-loader {
