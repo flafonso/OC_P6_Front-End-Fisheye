@@ -2,37 +2,22 @@ function photographerTemplate(data) {
   // console.log("Data : ", data);
   const { name, portrait, id, city, country, tagline, price } = data;
 
-  const picture = `assets/photographers/profile_picture/${portrait}`;
+  const picture = `/assets/photographers/profile_picture/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
     article.classList.add("photographer-card");
-
-    const cardLink = document.createElement("a");
-    cardLink.setAttribute("href", `photographer.html?id=${id}`);
-
-    const imgBoxEl = document.createElement("div");
-    imgBoxEl.classList.add("profile-img-box");
-    const imgEl = document.createElement("img");
-    imgEl.setAttribute("src", picture);
-    imgBoxEl.append(imgEl);
-
-    const nameEl = document.createElement("h2");
-    nameEl.textContent = name;
-
-    const locationEl = document.createElement("p");
-    locationEl.classList.add("location");
-    locationEl.textContent = `${city}, ${country}`;
-
-    const taglineEl = document.createElement("p");
-    taglineEl.textContent = tagline;
-
-    const priceEl = document.createElement("p");
-    priceEl.classList.add("price");
-    priceEl.textContent = `${price}€/jour`;
-
-    cardLink.append(imgBoxEl, nameEl);
-    article.append(cardLink, locationEl, taglineEl, priceEl);
+    article.innerHTML = `
+        <a href="photographer.html?id=${id}">
+          <div class="profile-img-box">
+            <img src="${picture}" />
+          </div>
+          <h2>${name}</h2>
+        </a>
+        <p class="location">${city}, ${country}</p>
+        <p>${tagline}</p>
+        <p class="price">${price}€/jour</p>
+    `;
     return article;
   }
   return { name, picture, id, city, country, tagline, price, getUserCardDOM };
