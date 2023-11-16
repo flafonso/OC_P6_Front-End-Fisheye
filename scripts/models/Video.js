@@ -17,6 +17,25 @@ class Video extends Media {
         </video>
     `;
   }
+
+  get domCard() {
+    const domCard = document.createElement("div");
+    domCard.className = "media-card";
+
+    domCard.innerHTML = `
+        <div class="card-thumbnail">
+          ${this.thumbnail}
+        </div>
+        <div class="card-content">
+          <h2 class="title">${this.title}</h2>
+          <div class="like">
+            <p>${this.likes}</p>
+            <img src="/assets/icons/heart.svg"/>
+          </div>
+        </div>
+    `;
+    return domCard;
+  }
 }
 
 export { Video };

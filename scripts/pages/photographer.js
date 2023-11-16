@@ -1,7 +1,7 @@
 import { getPhotographerDatas } from "/scripts/utils/datas.js";
 import { userPageTemplate } from "/scripts/templates/photographer.js";
 import { MediaFactory } from "/scripts/factories/MediaFactory.js";
-import { mediaCard } from "/scripts/templates/mediaCard.js";
+// import { mediaCard } from "/scripts/templates/mediaCard.js";
 import { Lightbox } from "/scripts/templates/lightbox.js";
 
 import { listenContact } from "/scripts/Utils/contactForm.js";
@@ -16,8 +16,8 @@ function displayMedia(media) {
   const mediaSection = document.querySelector(".media-section");
   mediaSection.innerHTML = "";
 
-  media.forEach((content) => {
-    mediaSection.append(mediaCard(content));
+  media.forEach((med) => {
+    mediaSection.append(med.domCard);
   });
   Lightbox.init();
 }
@@ -41,14 +41,15 @@ async function init() {
   console.log("data", data);
   const userPage = userPageTemplate(data);
   userPage.fillPhotographHeader();
+  userPage.fillLikeAndPrice();
+  userPage.fillModalForm();
   listenContact();
 
   const media = data.media.map((content) => MediaFactory.create(content));
   sortMedia(media);
   displayMedia(media);
 
-  userPage.fillLikeAndPrice();
-  userPage.fillModalForm();
+  
   // photographModal(data.photographer);
 
   const observer = new MutationObserver(() => {
