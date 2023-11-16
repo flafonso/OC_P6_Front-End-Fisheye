@@ -1,3 +1,5 @@
+import { MediaFactory } from "/scripts/factories/MediaFactory.js";
+
 function photographerTemplate(data) {
   // console.log("Data : ", data);
   const { name, portrait, id, city, country, tagline, price } = data;
@@ -20,47 +22,59 @@ function photographerTemplate(data) {
     `;
     return article;
   }
-  return { name, picture, id, city, country, tagline, price, getUserCardDOM };
+  return { getUserCardDOM };
 }
 
 
-function photographModal(photographer) {
-  const titleEl = document.querySelector(".modal header h2");
-  titleEl.innerHTML = `Contactez-moi
-                      <br>
-                      ${photographer.name}`;
-}
 
-// function to set price and like values
-function photographLikePrice(photographer) {
-  // get price element and set price text content
-  const priceEl = document.querySelector(".price");
-  priceEl.textContent = `${photographer.price}€ / jour`;
+function userPageTemplate(data) {
+  const { name, portrait, city, country, tagline, price } = data.photographer;
 
-  // get total like element and  set total like value
-  const totalLikeEl = document.querySelector(".total-like");
-  const totalLikeValue = document.createElement("span");
-  totalLikeValue.textContent = "12 043";  //Until we get the real value from the data
-  totalLikeEl.prepend(totalLikeValue);
-}
+  const media = data.media.map((content) => MediaFactory.create(content));
+  console.log("yyyy media", media);
 
-// Function to display photographer details
-function photographHeader(photographer) {
-  // Select photograph header and define photographer's portrait picture path
-  const photographHeader = document.querySelector(".photograph-header");
-  const picture = `/assets/photographers/profile_picture/${photographer.portrait}`;
+  const picture = `/assets/photographers/profile_picture/${portrait}`;
 
-  photographHeader.innerHTML = `
+  // Function to display photographer's info in the header
+  function fillPhotographHeader() {
+    const photographHeader = document.querySelector(".photograph-header");
+    photographHeader.innerHTML = `
       <div class="text-area">
-        <h1>${photographer.name}</h1>
-        <p class="location">${photographer.city}, ${photographer.country}</p>
-        <p>${photographer.tagline}</p>
+        <h1>${name}</h1>
+        <p class="location">${city}, ${country}</p>
+        <p>${tagline}</p>
       </div>
       <button class="contact_button contact--header">Contactez-moi</button>
       <div class="profile-img-box">
         <img src="${picture}" />
       </div>
   `;
+  }
+
+  // function to set price and like values
+  function fillLikeAndPrice() {
+    const priceEl = document.querySelector(".price");
+    priceEl.textContent = `${price}€ / jour`;
+
+    // get total like element and  set total like value
+    const totalLikeEl = document.querySelector(".total-like");
+    totalLikeEl.innerHTML = `
+        <span>12 043</span>
+        <img src="/assets/icons/heart.svg">
+    `;
+  }
+
+  function fillModalForm() {
+    const titleEl = document.querySelector(".modal header h2");
+    titleEl.innerHTML = `
+        Contactez-moi
+        <br>
+        ${name}
+    `;
+  }
+
+  return { fillPhotographHeader, fillLikeAndPrice, fillModalForm };
 }
 
-export {photographerTemplate, photographHeader, photographLikePrice, photographModal};
+
+export {photographerTemplate, userPageTemplate};

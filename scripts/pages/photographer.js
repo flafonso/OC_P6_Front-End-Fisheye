@@ -1,9 +1,5 @@
 import { getPhotographerDatas } from "/scripts/utils/datas.js";
-import {
-  photographHeader,
-  photographLikePrice,
-  photographModal,
-} from "/scripts/templates/photographer.js";
+import { userPageTemplate } from "/scripts/templates/photographer.js";
 import { MediaFactory } from "/scripts/factories/MediaFactory.js";
 import { mediaCard } from "/scripts/templates/mediaCard.js";
 import { Lightbox } from "/scripts/templates/lightbox.js";
@@ -42,15 +38,18 @@ function sortMedia(media) {
 
 async function init() {
   const data = await getPhotographerDatas(id);
-  photographHeader(data.photographer);
+  console.log("data", data);
+  const userPage = userPageTemplate(data);
+  userPage.fillPhotographHeader();
   listenContact();
 
   const media = data.media.map((content) => MediaFactory.create(content));
   sortMedia(media);
   displayMedia(media);
 
-  photographLikePrice(data.photographer);
-  photographModal(data.photographer);
+  userPage.fillLikeAndPrice();
+  userPage.fillModalForm();
+  // photographModal(data.photographer);
 
   const observer = new MutationObserver(() => {
     sortMedia(media);
