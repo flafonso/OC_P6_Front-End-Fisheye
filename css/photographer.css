@@ -177,6 +177,7 @@ form textarea {
     width: calc(85% + 80px);
     height: auto;
     margin: 30px auto;
+    margin-bottom: 50px;
     display: grid;
     grid-template-columns: repeat(3, 28%);
     justify-content: center;

@@ -1,4 +1,6 @@
 import { MediaFactory } from "/scripts/factories/MediaFactory.js";
+import { Lightbox } from "/scripts/templates/lightbox.js";
+// import { mediaCard } from "/scripts/templates/mediaCard.js";
 
 function photographerTemplate(data) {
   // console.log("Data : ", data);
@@ -33,7 +35,12 @@ function userPageTemplate(data) {
   const userMedia = data.media.map((content) => MediaFactory.create(content));
   console.log("yyyy userMedia", userMedia);
 
+  let totalLike = 0;
+  userMedia.forEach(media => totalLike += media.likes);
+  console.log("totalLike", totalLike);
+
   const picture = `/assets/photographers/profile_picture/${portrait}`;
+  const selectedEl = document.querySelector(".selected");
 
   // Function to display photographer's info in the header
   function fillPhotographHeader() {
@@ -59,7 +66,7 @@ function userPageTemplate(data) {
     // get total like element and  set total like value
     const totalLikeEl = document.querySelector(".total-like");
     totalLikeEl.innerHTML = `
-        <span>12 043</span>
+        <span>${totalLike}</span>
         <img src="/assets/icons/heart.svg">
     `;
   }
@@ -73,7 +80,31 @@ function userPageTemplate(data) {
     `;
   }
 
-  return { fillPhotographHeader, fillLikeAndPrice, fillModalForm };
+  function fillMedia() {
+    const mediaSection = document.querySelector(".media-section");
+    mediaSection.innerHTML = "";
+  
+    userMedia.forEach((media) => {
+      mediaSection.append(media.domCard);
+    });
+    Lightbox.init();
+  }
+  
+  function sortMedia() {
+    switch (selectedEl.innerHTML) {
+    case "Date":
+      userMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
+      break;
+    case "Titre":
+      userMedia.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    default:
+      userMedia.sort((a, b) => b.likes - a.likes);
+    }
+    console.log("sortMedia", userMedia);
+  }
+
+  return { fillPhotographHeader, fillLikeAndPrice, fillModalForm, fillMedia, sortMedia};
 }
 
 
