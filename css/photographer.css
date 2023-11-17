@@ -216,6 +216,8 @@ form textarea {
     display: flex;
     align-items: center;
     gap: 5px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .card-content .like p {

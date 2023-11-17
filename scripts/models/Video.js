@@ -36,6 +36,23 @@ class Video extends Media {
           </div>
         </div>
     `;
+    domCard.querySelector(".like").addEventListener("click", (e) => {
+      const likeEl = e.currentTarget;
+      // console.log("likeEl", likeEl);
+      const totalLikeEl = document.querySelector(".total-like").firstElementChild;
+      let totalLikeValue = parseInt(totalLikeEl.textContent);
+      // console.log("totalLikeEl", totalLikeEl);
+      if (likeEl.classList.contains("is-liked")) {
+        this.likes--;
+        totalLikeEl.innerText = totalLikeValue - 1;
+      } else {
+        this.likes++;
+        totalLikeEl.innerText = totalLikeValue + 1;
+      }
+      // console.log("likeEl.firstChild", likeEl.firstElementChild);
+      likeEl.firstElementChild.innerText = `${this.likes}`;
+      likeEl.classList.toggle("is-liked");
+    });
     return domCard;
   }
 }

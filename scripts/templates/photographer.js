@@ -6,7 +6,7 @@ function photographerTemplate(data) {
   // console.log("Data : ", data);
   const { name, portrait, id, city, country, tagline, price } = data;
 
-  const picture = `/assets/photographers/profile_picture/${portrait}`;
+  const picturePath = `/assets/photographers/profile_picture/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
@@ -14,7 +14,7 @@ function photographerTemplate(data) {
     article.innerHTML = `
         <a href="photographer.html?id=${id}">
           <div class="profile-img-box">
-            <img src="${picture}" />
+            <img src="${picturePath}" />
           </div>
           <h2>${name}</h2>
         </a>
@@ -31,15 +31,16 @@ function photographerTemplate(data) {
 
 function userPageTemplate(data) {
   const { name, portrait, city, country, tagline, price } = data.photographer;
-
   const userMedia = data.media.map((content) => MediaFactory.create(content));
+
   console.log("yyyy userMedia", userMedia);
 
   let totalLike = 0;
   userMedia.forEach(media => totalLike += media.likes);
+
   console.log("totalLike", totalLike);
 
-  const picture = `/assets/photographers/profile_picture/${portrait}`;
+  const picturePath = `/assets/photographers/profile_picture/${portrait}`;
   const selectedEl = document.querySelector(".selected");
 
   // Function to display photographer's info in the header
@@ -53,7 +54,7 @@ function userPageTemplate(data) {
       </div>
       <button class="contact_button contact--header">Contactez-moi</button>
       <div class="profile-img-box">
-        <img src="${picture}" />
+        <img src="${picturePath}" />
       </div>
   `;
   }

@@ -13,13 +13,13 @@ async function init() {
   const data = await getPhotographerDatas(id);
   console.log("data", data);
   const userPage = userPageTemplate(data);
-  
+
   userPage.fillPhotographHeader();
   userPage.fillLikeAndPrice();
   userPage.fillModalForm();
   userPage.sortMedia();
   userPage.fillMedia();
-  
+
   listenContact();
 
   const observer = new MutationObserver(() => {
