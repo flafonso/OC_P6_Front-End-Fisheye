@@ -30,7 +30,9 @@ class Video extends Media {
           <h2 class="title">${this.title}</h2>
           <div class="like">
             <p>${this.likes}</p>
-            <img src="/assets/icons/heart.svg"/>
+            <svg viewBox="0 0 22 21">
+              <use xlink:href="/assets/icons/heart.svg#heart"></use>
+            </svg>
           </div>
         </div>
     `;

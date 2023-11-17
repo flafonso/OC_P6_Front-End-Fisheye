@@ -222,9 +222,11 @@ form textarea {
     font-weight: 500;
     margin: 0;
 }
-/* .card-content .like img {
-    fill: #901C1C;
-} */
+.card-content .like svg {
+    width: 17px;
+    height: 16px;
+    fill: currentColor;
+}
 
  .sort-section {
     display: flex;
