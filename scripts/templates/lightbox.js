@@ -22,6 +22,7 @@ class Lightbox {
     this.element = this.buildDom();
     this._onkeyUp = this.onkeyUp.bind(this);
     this.loadMedia(mediaEl);
+    document.querySelector("main").ariaHidden = "true";
     document.body.append(this.element);
     document.addEventListener("keyup", this._onkeyUp);
 
@@ -79,6 +80,7 @@ class Lightbox {
       this.element.parentElement?.removeChild(this.element);
     }, 500);
     document.removeEventListener("keyup", this._onkeyUp);
+    document.querySelector("main").ariaHidden = "false";
   }
 
   /**
@@ -116,6 +118,7 @@ class Lightbox {
     const dom = document.createElement("div");
     dom.classList.add("lightbox");
     dom.ariaLabel = "Media closeup view";
+    dom.role = "dialog";
     dom.innerHTML = `
         <button class="lightbox-close" aria-label="Close dialog"></button>
         <button class="lightbox-next" aria-label="Next media"></button>
