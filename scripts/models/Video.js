@@ -14,23 +14,25 @@ class Video extends Media {
     return `
         <video>
           <source src="${this.src}" type="video/mp4" />
+          <meta itemprop="name" content="${this.video}">
+          <meta itemprop="description" content="${this.video}">
         </video>
     `;
   }
 
   get domCard() {
-    const domCard = document.createElement("div");
+    const domCard = document.createElement("article");
     domCard.className = "media-card";
 
     domCard.innerHTML = `
-        <div class="card-thumbnail">
+        <div class="card-thumbnail" aria-label="Lilac breasted roller, closeup view">
           ${this.thumbnail}
         </div>
         <div class="card-content">
           <h2 class="title">${this.title}</h2>
           <div class="like">
             <p>${this.likes}</p>
-            <svg viewBox="0 0 22 21">
+            <svg viewBox="0 0 22 21" role="img">
               <use xlink:href="/assets/icons/heart.svg#heart"></use>
             </svg>
           </div>

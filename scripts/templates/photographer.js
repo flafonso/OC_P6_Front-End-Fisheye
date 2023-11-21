@@ -12,9 +12,9 @@ function photographerTemplate(data) {
     const article = document.createElement("article");
     article.classList.add("photographer-card");
     article.innerHTML = `
-        <a href="photographer.html?id=${id}">
+        <a href="photographer.html?id=${id}" alt="">
           <div class="profile-img-box">
-            <img src="${picturePath}" />
+            <img src="${picturePath}" alt="${name}"/>
           </div>
           <h2>${name}</h2>
         </a>
@@ -33,12 +33,12 @@ function userPageTemplate(data) {
   const { name, portrait, city, country, tagline, price } = data.photographer;
   const userMedia = data.media.map((content) => MediaFactory.create(content));
 
-  console.log("yyyy userMedia", userMedia);
+  // console.log("yyyy userMedia", userMedia);
 
   let totalLike = 0;
   userMedia.forEach(media => totalLike += media.likes);
 
-  console.log("totalLike", totalLike);
+  // console.log("totalLike", totalLike);
 
   const picturePath = `/assets/photographers/profile_picture/${portrait}`;
   const selectedEl = document.querySelector(".selected");
@@ -52,9 +52,9 @@ function userPageTemplate(data) {
         <p class="location">${city}, ${country}</p>
         <p>${tagline}</p>
       </div>
-      <button class="contact_button contact--header">Contactez-moi</button>
+      <button class="contact_button contact--header" name="Contact Me">Contactez-moi</button>
       <div class="profile-img-box">
-        <img src="${picturePath}" />
+        <img src="${picturePath}" alt="${name}"/>
       </div>
   `;
   }
@@ -68,7 +68,7 @@ function userPageTemplate(data) {
     const totalLikeEl = document.querySelector(".total-like");
     totalLikeEl.innerHTML = `
         <span>${totalLike}</span>
-        <img src="/assets/icons/heart.svg">
+        <img src="/assets/icons/heart.svg" alt="Total likes from all the photographer's media">
     `;
   }
 
@@ -102,7 +102,7 @@ function userPageTemplate(data) {
     default:
       userMedia.sort((a, b) => b.likes - a.likes);
     }
-    console.log("sortMedia", userMedia);
+    // console.log("sortMedia", userMedia);
   }
 
   return { fillPhotographHeader, fillLikeAndPrice, fillModalForm, fillMedia, sortMedia};

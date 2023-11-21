@@ -115,10 +115,11 @@ class Lightbox {
   buildDom() {
     const dom = document.createElement("div");
     dom.classList.add("lightbox");
+    dom.ariaLabel = "Media closeup view";
     dom.innerHTML = `
-        <button class="lightbox-close">Fermer</button>
-        <button class="lightbox-next">Suivant</button>
-        <button class="lightbox-prev">Précédent</button>
+        <button class="lightbox-close" aria-label="Close dialog"></button>
+        <button class="lightbox-next" aria-label="Next media"></button>
+        <button class="lightbox-prev" aria-label="Previous media"></button>
         <div class="lightbox-content"></div>
         <p class="media-title">media title</p>
     `;

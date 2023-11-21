@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -8,68 +8,68 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header role="banner">
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
       </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-      </div>
+      <header class="photograph-header">
+      </header>
 
-      <div class="sort-section">
+      <section class="sort-section">
         <span class="sort-by">Trier par</span>
         <div class="dropdown">
-          <div class="select">
+          <div class="select" aria-label="Order by" role="button" aria-haspopup="listbox">
             <span class="selected">Popularité</span>
             <svg class="arrow" viewBox="0 0 16 11" xmlns="http://www.w3.org/2000/svg">
               <path d="M 1.9 10.5 L 8 4.4 L 14.1 10.5 L 16 8.7 L 8 0.7 L 0 8.7 L 1.9 10.5 Z"/>
             </svg>
           </div>
-          <div class="options-menu">
-            <p class="hide-option">Popularité</p>
-            <p class="middle-separation">Date</p>
-            <p>Titre</p>
+          <div class="options-menu" role="listbox">
+            <p class="hide-option" role="option">Popularité</p>
+            <p class="middle-separation" role="option">Date</p>
+            <p role="option">Titre</p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="media-section">
-      </div>
+      <section class="media-section">
+      </section>
 
-      <div class="like-and-price">
+      <footer class="like-and-price">
         <div class="total-like">
-          <img src="/assets/icons/heart.svg"/>
         </div>
         <div class="price"></div>
-      </div>
+      </footer>
     </main>
+
     <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2></h2>
-          <img class="close-btn" src="/assets/icons/close.svg"/>
+          <img class="close-btn" src="/assets/icons/close.svg" alt="Close Contact form"/>
         </header>
 				<form name="contact-me">
 					<div class="form-data">
-						<label for="first">Prénom</label>
-						<input type="text" id="first" name="first" class="text-control"/>
+						<label for="First name">Prénom</label>
+						<input type="text" id="First name" name="First name" class="text-control"/>
 					</div>
 					<div class="form-data">
-						<label for="last">Nom</label>
-						<input type="text" id="last" name="last" class="text-control"/>
+						<label for="Last name">Nom</label>
+						<input type="text" id="Last name" name="Last name" class="text-control"/>
 					</div>
 					<div class="form-data">
-						<label for="email">Email</label>
-						<input type="email" id="email" name="email" class="text-control"/>
+						<label for="Email">Email</label>
+						<input type="email" id="Email" name="Email" class="text-control"/>
 					</div>
 					<div class="form-data">
-						<label for="user-message">Votre message</label>
-            <textarea id="user-message" name="user-message" class="text-control"></textarea>
+						<label for="Your message">Votre message</label>
+            <textarea id="Your message" name="Your message" class="text-control"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" name="Send">Envoyer</button>
           <p class="success-text">Merci pour<br>votre message</p>
-          <button class="btn-finish">Fermer</button>
+          <button class="btn-finish" name="Close Contact form button two">Fermer</button>
 				</form>
 			</div>
 		</div>

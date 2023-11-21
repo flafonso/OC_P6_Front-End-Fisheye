@@ -322,7 +322,7 @@ form textarea {
     left: 0;
     bottom: 0;
     z-index: 10;
-    background-color: rgba(23, 27, 39, 0.9);
+    background-color: white;
     animation: lightboxIn 500ms ease-in-out;
 }
 
@@ -331,7 +331,6 @@ form textarea {
     padding: 0;
     border: none;
     cursor: pointer;
-    text-indent: -3000px;
     fill: #901C1C;
 }
 
