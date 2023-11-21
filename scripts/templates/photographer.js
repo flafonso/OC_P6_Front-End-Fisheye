@@ -1,6 +1,5 @@
 import { MediaFactory } from "/scripts/factories/MediaFactory.js";
 import { Lightbox } from "/scripts/templates/lightbox.js";
-// import { mediaCard } from "/scripts/templates/mediaCard.js";
 
 function photographerTemplate(data) {
   // console.log("Data : ", data);
