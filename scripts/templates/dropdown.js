@@ -12,6 +12,8 @@ function dropdownClic() {
   // Show or hide options menu
   optionsMenuEl.classList.toggle("options-menu--visible");
   arrowEl.classList.toggle("arrow--rotate");
+
+  selectEl.ariaExpanded = selectEl.ariaExpanded === "false" ? "true" : "false";
 }
 
 selectEl.addEventListener("click", dropdownClic);

@@ -4,7 +4,7 @@ function isEmpty(value) {
 
 const form = {
   firstName: {
-    element: document.querySelector("#first"),
+    element: document.querySelector("#First-name"),
     get value() {
       return this.element.value.trim();
     },
@@ -18,7 +18,7 @@ const form = {
     },
   },
   lastName: {
-    element: document.querySelector("#last"),
+    element: document.querySelector("#Last-name"),
     get value() {
       return this.element.value.trim();
     },
@@ -32,7 +32,7 @@ const form = {
     },
   },
   email: {
-    element: document.querySelector("#email"),
+    element: document.querySelector("#Email"),
     get value() {
       return this.element.value.trim();
     },
@@ -48,7 +48,7 @@ const form = {
     },
   },
   userMessage: {
-    element: document.querySelector("#user-message"),
+    element: document.querySelector("#Your-message"),
     get value() {
       return this.element.value.trim();
     },

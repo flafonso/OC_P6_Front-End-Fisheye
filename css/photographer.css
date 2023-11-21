@@ -49,6 +49,18 @@
     font-size: 24px;
 }
 
+.close-btn {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background: url(/assets/icons/close.svg) center center / 42px 42px;
+    width: 42px;
+    height: 42px;
+    top: 77px;
+    right: calc(13vw - 69px); /* 69px because 42 + 27*/
+    z-index: 12;
+}
+
 .contact_button, .btn-finish {
     font-size: 20px;
     font-weight: bold;

@@ -13,20 +13,20 @@
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
       </a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <header class="photograph-header">
       </header>
 
       <section class="sort-section">
-        <span class="sort-by">Trier par</span>
+        <label id="Order-by" class="sort-by">Trier par</label>
         <div class="dropdown">
-          <div class="select" aria-label="Order by" role="button" aria-haspopup="listbox">
+          <div class="select" aria-controls="listbox1" aria-labelledby="Order-by" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0">
             <span class="selected">Popularité</span>
             <svg class="arrow" viewBox="0 0 16 11" xmlns="http://www.w3.org/2000/svg">
               <path d="M 1.9 10.5 L 8 4.4 L 14.1 10.5 L 16 8.7 L 8 0.7 L 0 8.7 L 1.9 10.5 Z"/>
             </svg>
           </div>
-          <div class="options-menu" role="listbox">
+          <div id="listbox1" class="options-menu" aria-labelledby="Order-by" role="listbox">
             <p class="hide-option" role="option">Popularité</p>
             <p class="middle-separation" role="option">Date</p>
             <p role="option">Titre</p>
@@ -44,28 +44,28 @@
       </footer>
     </main>
 
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog" aria-describedby="modal-title" aria-hidden="true">
 			<div class="modal">
 				<header>
-          <h2></h2>
-          <img class="close-btn" src="/assets/icons/close.svg" alt="Close Contact form"/>
+          <h2 id="modal-title"></h2>
+          <button class="close-btn" aria-label="Close Contact form"></button>
         </header>
 				<form name="contact-me">
 					<div class="form-data">
-						<label for="First name">Prénom</label>
-						<input type="text" id="First name" name="First name" class="text-control"/>
+						<label for="First-name">Prénom</label>
+						<input type="text" id="First-name" name="First-name" class="text-control"/>
 					</div>
 					<div class="form-data">
-						<label for="Last name">Nom</label>
-						<input type="text" id="Last name" name="Last name" class="text-control"/>
+						<label for="Last-name">Nom</label>
+						<input type="text" id="Last-name" name="Last-name" class="text-control"/>
 					</div>
 					<div class="form-data">
 						<label for="Email">Email</label>
 						<input type="email" id="Email" name="Email" class="text-control"/>
 					</div>
 					<div class="form-data">
-						<label for="Your message">Votre message</label>
-            <textarea id="Your message" name="Your message" class="text-control"></textarea>
+						<label for="Your-message">Votre message</label>
+            <textarea id="Your-message" name="Your-message" class="text-control"></textarea>
 					</div>
           <button class="contact_button" name="Send">Envoyer</button>
           <p class="success-text">Merci pour<br>votre message</p>

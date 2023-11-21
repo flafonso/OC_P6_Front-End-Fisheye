@@ -9,6 +9,8 @@ function displayModal() {
 function closeModal() {
   modal.style.display = "none";
   form.emptyAll();
+  document.querySelector("main").ariaHidden = "false";
+  modal.ariaHidden = "true";
 }
 
 const closeBtn = document.querySelector(".close-btn");
@@ -113,7 +115,11 @@ function submission(event) {
 function listenContact() {
   const headerContactBtn = document.querySelector(".contact_button.contact--header");
   // console.log(headerContactBtn);
-  headerContactBtn.addEventListener("click", displayModal);
+  headerContactBtn.addEventListener("click", () => {
+    displayModal();
+    document.querySelector("main").ariaHidden = "true";
+    modal.ariaHidden = "false";
+  });
 }
 
 export { listenContact };
