@@ -1,5 +1,5 @@
-import { MediaFactory } from "./scripts/factories/MediaFactory.js";
-import { Lightbox } from "./scripts/templates/lightbox.js";
+import { MediaFactory } from "../factories/MediaFactory.js";
+import { Lightbox } from "../templates/lightbox.js";
 
 function photographerTemplate(data) {
   const { name, portrait, id, city, country, tagline, price } = data;

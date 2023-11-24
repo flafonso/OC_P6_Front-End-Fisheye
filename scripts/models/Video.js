@@ -1,4 +1,4 @@
-import { Media } from "./scripts/models/Media.js";
+import { Media } from "./Media.js";
 
 class Video extends Media {
   constructor(id, title, likes, date, price, video) {

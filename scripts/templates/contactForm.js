@@ -1,4 +1,4 @@
-import {form} from "./scripts/utils/form.js";
+import {form} from "../utils/form.js";
 
 const modal = document.getElementById("contact_modal");
 

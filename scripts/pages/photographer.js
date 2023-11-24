@@ -1,7 +1,7 @@
-import { getPhotographerDatas } from "./scripts/utils/datas.js";
-import { userPageTemplate } from "./scripts/templates/photographer.js";
+import { getPhotographerDatas } from "../utils/datas.js";
+import { userPageTemplate } from "../templates/photographer.js";
 
-import { listenContact } from "./scripts/templates/contactForm.js";
+import { listenContact } from "../templates/contactForm.js";
 
 const params = new URL(document.location).searchParams;
 const id = parseInt(params.get("id"));
