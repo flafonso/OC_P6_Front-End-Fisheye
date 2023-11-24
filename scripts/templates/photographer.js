@@ -1,10 +1,10 @@
-import { MediaFactory } from "scripts/factories/MediaFactory.js";
-import { Lightbox } from "scripts/templates/lightbox.js";
+import { MediaFactory } from "./scripts/factories/MediaFactory.js";
+import { Lightbox } from "./scripts/templates/lightbox.js";
 
 function photographerTemplate(data) {
   const { name, portrait, id, city, country, tagline, price } = data;
 
-  const picturePath = `/assets/photographers/profile_picture/${portrait}`;
+  const picturePath = `assets/photographers/profile_picture/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
@@ -34,7 +34,7 @@ function userPageTemplate(data) {
   let totalLike = 0;
   userMedia.forEach(media => totalLike += media.likes);
 
-  const picturePath = `/assets/photographers/profile_picture/${portrait}`;
+  const picturePath = `assets/photographers/profile_picture/${portrait}`;
   const selectedEl = document.querySelector(".selected");
 
   // Function to display photographer's info in the header
@@ -62,7 +62,7 @@ function userPageTemplate(data) {
     const totalLikeEl = document.querySelector(".total-like");
     totalLikeEl.innerHTML = `
         <span>${totalLike}</span>
-        <img src="/assets/icons/heart.svg" alt="Total likes from all the photographer's media">
+        <img src="assets/icons/heart.svg" alt="Total likes from all the photographer's media">
     `;
   }
   function fillModalForm() {
