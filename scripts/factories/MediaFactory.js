@@ -1,6 +1,6 @@
 /* eslint-disable no-prototype-builtins */
-import { Image } from "/scripts/models/Image.js";
-import { Video } from "/scripts/models/Video.js";
+import { Image } from "scripts/models/Image.js";
+import { Video } from "scripts/models/Video.js";
 class MediaFactory {
   static create(content) {
     if (content.hasOwnProperty("image")) {
