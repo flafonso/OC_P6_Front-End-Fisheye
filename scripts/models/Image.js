@@ -7,7 +7,7 @@ class Image extends Media {
   }
 
   get src() {
-    return `/assets/media/${this.image}`;
+    return `assets/media/${this.image}`;
   }
 
   get thumbnail() {
@@ -29,7 +29,7 @@ class Image extends Media {
           <div class="like">
             <p>${this.likes}</p>
             <svg viewBox="0 0 22 21" role="img">
-              <use xlink:href="/assets/icons/heart.svg#heart"></use>
+              <use xlink:href="assets/icons/heart.svg#heart"></use>
             </svg>
           </div>
         </div>
