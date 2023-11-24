@@ -106,15 +106,12 @@ function submission(event) {
   event.preventDefault();
   if (form.valid) {
     switchToMessage();
-    console.log("valide");
   }
-  return console.log("validate fini");
 }
 
 
 function listenContact() {
   const headerContactBtn = document.querySelector(".contact_button.contact--header");
-  // console.log(headerContactBtn);
   headerContactBtn.addEventListener("click", () => {
     displayModal();
     document.querySelector("main").ariaHidden = "true";

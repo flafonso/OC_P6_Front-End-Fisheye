@@ -3,8 +3,6 @@ class Lightbox {
     const mediaList = Array.from(
       document.querySelectorAll(".card-thumbnail img, video")
     );
-    // console.log("mediaList", mediaList);
-
     mediaList.forEach((media) =>
       media.addEventListener(
         "click",
@@ -25,9 +23,6 @@ class Lightbox {
     document.querySelector("main").ariaHidden = "true";
     document.body.append(this.element);
     document.addEventListener("keyup", this._onkeyUp);
-
-    // console.log("media", mediaEl);
-    // console.log("element", this.element);
   }
 
   /**
@@ -138,17 +133,5 @@ class Lightbox {
     return dom;
   }
 }
-
-/**
- * 
-      <div class="lightbox">
-        <button class="lightbox-close">Fermer</button>
-        <button class="lightbox-next">Suivant</button>
-        <button class="lightbox-prev">Précédent</button>
-        <div class="lightbox-content">
-          <img src="/assets/photographers/account.png" alt="photo de la série Fisheye" />
-        </div>
-      </div>
- */
 
 export { Lightbox };

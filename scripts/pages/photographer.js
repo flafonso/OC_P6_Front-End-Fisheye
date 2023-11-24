@@ -7,11 +7,9 @@ const params = new URL(document.location).searchParams;
 const id = parseInt(params.get("id"));
 
 const selectedEl = document.querySelector(".selected");
-// console.log("selectedEl data", selectedEl.getDatas);
 
 async function init() {
   const data = await getPhotographerDatas(id);
-  console.log("data", data);
   const userPage = userPageTemplate(data);
 
   userPage.fillPhotographHeader();

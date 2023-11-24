@@ -67,13 +67,11 @@ const form = {
 
     for (const key in this) {
       if (this.hasOwnProperty(key) && key !== "valid" && key !== "emptyAll") {  // eslint-disable-line no-prototype-builtins
-        // console.log(`key = ${key}, => ${key}.valid = ${this[key].valid}`);
         const field = this[key];
 
         // Check field validity and add/delete dataset attributes
         if (!field.valid) {
           isValid = false; // If a property is invalid, "valid" is false
-          // console.log(field.element.parentElement);
           field.element.parentElement.dataset.error = field.message;
           field.element.parentElement.dataset.errorVisible = "true";
         } else {
