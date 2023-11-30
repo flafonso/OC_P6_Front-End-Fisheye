@@ -14,8 +14,6 @@ class Image extends Media {
     return `<img src="${this.src}" alt="${this.title}"/>`;
   }
 
-  xxxx() {}
-
   get domCard() {
     const domCard = document.createElement("article");
     domCard.className = "media-card";

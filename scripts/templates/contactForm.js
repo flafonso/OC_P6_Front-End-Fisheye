@@ -105,6 +105,9 @@ function switchToMessage() {
 function submission(event) {
   event.preventDefault();
   if (form.valid) {
+    console.log(`Prénom et nom : ${form.firstName.value} ${form.lastName.value}`);
+    console.log(`Email : ${form.email.value}`);
+    console.log(`Message : ${form.userMessage.value}`);
     switchToMessage();
   }
 }

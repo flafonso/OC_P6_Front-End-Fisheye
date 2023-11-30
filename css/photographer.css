@@ -74,6 +74,12 @@
     cursor: pointer;
 }
 
+.contact_button.contact--header:is(:hover, :focus) {
+    color: black;
+    background-color: #DB8876;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
 .btn-finish {
     display: none;
     margin-top: auto;
@@ -99,6 +105,7 @@
     justify-content: space-between;
     padding: 35px;
     margin: 5% auto;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .modal header {
@@ -153,7 +160,7 @@ form textarea {
 .form-data[data-error]::after {
     content: attr(data-error);
     font-size: 24px;
-    color: #e54858;
+    color: #901C1C;
     display: block;
     margin-top: 7px;
     margin-bottom: 7px;
@@ -275,6 +282,7 @@ form textarea {
 .dropdown--open {
     padding: 10px 15px;
     height: 131px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .dropdown .select {
